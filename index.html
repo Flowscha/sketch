@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="header">
+    <button id="set">Reset</button>
+    <button id="prompt">Squares</button>
+</div>
+<div id="container"></div>
+</body>
+<script>
+let squares = 0;
+let squared = 625;
+
+const container = document.querySelector("#container");
+const reset = document.querySelector("#set");
+const button2 = document.querySelector("#prompt");
+
+
+button2.addEventListener("click", () => {
+squares = prompt("Wieviele Kästchen?");
+squared = Math.pow(squares, 2);
+});
+
+function draw (){
+container.innerHTML = "";
+for (let i = 1; i <= squared ; i++){
+container.innerHTML += '<div class="box"></div>';
+}
+
+const box = document.querySelectorAll(".box");
+
+    box.forEach((box) => {
+    box.addEventListener('mouseover', (event) => {
+        if (box.classList.contains("active") === false){
+            box.classList.add('active');
+        }else{
+            box.classList.remove('active');
+        }
+        
+    });
+})
+};
+
+draw();
+
+reset.addEventListener("click", () => {
+    draw();
+let width = document.getElementsByClassName("box");
+let change = 100/squares;
+for (let i = 0; i < width.length; i++){
+    width[i].style.width = `${change}%`;
+    width[i].style.height = `${change}%`;
+}
+
+});
+</script>
+</html>
