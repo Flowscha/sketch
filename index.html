@@ -36,15 +36,13 @@ container.innerHTML += '<div class="box"></div>';
 
 const box = document.querySelectorAll(".box");
 
-    box.forEach((box) => {
-    box.addEventListener('mouseover', (event) => {
-        if (box.classList.contains("active") === false){
-            box.classList.add('active');
-        }else{
-            box.classList.remove('active');
+    box.forEach((boxes) => {
+    boxes.addEventListener('mouseover', (event) => {
+        let randomColor = Math.floor(Math.random()*16777215).toString(16);
+        boxes.style.backgroundColor = "#" +randomColor;
+        boxes.style.filter =  "brightness(brightness)";
         }
-        
-    });
+    );
 })
 };
 
